@@ -10,19 +10,23 @@
    <body>
     <main>
         <div id="game-intro">
-            <h1>Rock, Paper, Scissors - Your Choice, Your Victory!</h1>
-            <br />
-            <button id="start-button">Let’s play</button>
+            <div class="heading-button">
+                <h1>Rock, Paper, Scissors - Your Choice, Your Victory!</h1>
+                <button id="start-button">Let’s play</button>
+            </div>
         </div>
 
         <div id="game-screen" style="display: none;">
+            <div class="game-wrapper">
              <h2>Computer Choice: <span id="computer-choice"></span></h2>
              <h2>Your Choice: <span id="user-choice"></span></h2>
              <h2>Result: <span id="result"></span></h2>
-
-            <button id="rock">rock</button>
-            <button id="paper">paper</button>
-            <button id="scissors">scissors</button>
+                <div class="choice-wrapper">
+                 <button id="rock">rock</button>
+                 <button id="paper">paper</button>
+                 <button id="scissors">scissors</button>
+                </div>
+            </div>
         </div>
         <script src="app.js" charset="utf-8"></script>
     </main>
