@@ -9,7 +9,9 @@ The first iteration for the MVP was done in about an hour.
 
 Styling with CSS and possibly sound effects will be added in further iterations. 
 
-Control is done by clicking on the selection buttons for Rock, Paper, or Scissors. Enjoy playing!
+Control is done by clicking on the selection buttons for Rock, Paper, or Scissors. 
+
+Enjoy playing!
 
 
 ## MVP
