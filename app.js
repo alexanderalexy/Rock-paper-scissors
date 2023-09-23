@@ -1,50 +1,63 @@
 const computerChoiceDisplay = document.getElementById('computer-choice');
 const userChoiceDisplay = document.getElementById('user-choice');
-const resultDispaly = document.getElementById('result');
+const resultDisplay = document.getElementById('result');
 
-const possibleChoices = document.querySelectorAll('button');
+const gameIntro = document.getElementById('game-intro');
+const gameScreen = document.getElementById('game-screen');
+const startButton = document.getElementById('start-button');
+const gameButtons = document.querySelectorAll('#rock, #paper, #scissors');
+
 let userChoice;
 let result;
 
-possibleChoices.forEach(possibleChoice => 
-    possibleChoice.addEventListener('click', (e) => {
-      userChoice = e.target.id;
-      userChoiceDisplay.innerHTML = userChoice;
-      generateComputerChoice();
-      getResult();
-    }));
+// Funktion, um das Spiel zu starten und die Startseite auszublenden
+function startGame() {
+    gameIntro.style.display = 'none'; // Startseite ausblenden
+    gameScreen.style.display = 'block'; // Spielbildschirm anzeigen
+}
 
-    generateComputerChoice = () => {
-        const randomNumber = Math.floor(Math.random() * possibleChoices.length + 1);
+// Event-Listener für den "Start"-Button hinzufügen
+startButton.addEventListener('click', startGame);
 
-        if(randomNumber === 1) {
-            computerChoice = "rock";
-        } else if (randomNumber === 2) {
-            computerChoice = "paper";
-        } else if (randomNumber === 3) {
-            computerChoice = "scissors";
-        }
+gameButtons.forEach(gameButton => {
+    gameButton.addEventListener('click', (e) => {
+        userChoice = e.target.id;
+        userChoiceDisplay.innerHTML = userChoice;
+        generateComputerChoice();
+        getResult();
+    });
+});
 
-        computerChoiceDisplay.innerHTML = computerChoice;
-        
+const generateComputerChoice = () => {
+    const randomNumber = Math.floor(Math.random() * gameButtons.length);
+
+    if (randomNumber === 0) {
+        computerChoice = "rock";
+    } else if (randomNumber === 1) {
+        computerChoice = "paper";
+    } else if (randomNumber === 2) {
+        computerChoice = "scissors";
     }
 
-    getResult = () => {
-        if (computerChoice === userChoice) {
-            result = "It's a draw !"
-        } else if (computerChoice === "rock" && userChoice === "paper") {
-            result = "you win !"
-        } else if (computerChoice === "rock" && userChoice === "scissors") {
-            result = "you lose !"
-        } else if (computerChoice === "paper" && userChoice === "scissors") {
-            result = "you win !"
-        } else if (computerChoice === "paper" && userChoice === "rock") {
-            result = "you lose !"
-        } else if (computerChoice === "scissors" && userChoice === "rock") {
-            result = "you win !"
-        } else if (computerChoice === "scissors" && userChoice === "paper") {
-            result = "you lose !"
-        }
+    computerChoiceDisplay.innerHTML = computerChoice;
+};
 
-        resultDispaly.innerHTML = result;
-    };
+const getResult = () => {
+    if (computerChoice === userChoice) {
+        result = "It's a draw!";
+    } else if (computerChoice === "rock" && userChoice === "paper") {
+        result = "You win!";
+    } else if (computerChoice === "rock" && userChoice === "scissors") {
+        result = "You lose!";
+    } else if (computerChoice === "paper" && userChoice === "scissors") {
+        result = "You win!";
+    } else if (computerChoice === "paper" && userChoice === "rock") {
+        result = "You lose!";
+    } else if (computerChoice === "scissors" && userChoice === "rock") {
+        result = "You win!";
+    } else if (computerChoice === "scissors" && userChoice === "paper") {
+        result = "You lose!";
+    }
+
+    resultDisplay.innerHTML = result;
+};
